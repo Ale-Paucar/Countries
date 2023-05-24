@@ -22,7 +22,7 @@ const CountryDetail = () => {
     },[])
 
     
-    
+    console.log(contryDetail[0]?.activities); 
 
     return (
         <div className={styles.container}>
@@ -30,13 +30,24 @@ const CountryDetail = () => {
                 contryDetail.length
                 ?
                 <div>
-                    <h2 className={styles.countryName}>Pais: {contryDetail[0].name}</h2>
-                    <img src={contryDetail[0].flag.svg} alt={contryDetail[0].flag.alt} className={styles.flag}/>
-                    <h3>Capital: {contryDetail[0].capital}</h3>
-                    <p>Region: {contryDetail[0].continent}</p>
-                    <p>Subregion: {contryDetail[0].subregion}</p>
-                    <p>Area: {contryDetail[0].area} km2</p>
-                    <p>Población: {contryDetail[0].population}</p>
+                    <h2 className={styles.countryName}>Pais: {contryDetail[0]?.name}</h2>
+                    <img src={contryDetail[0].flag.svg} alt={contryDetail[0]?.flag.alt} className={styles.flag}/>
+                    <h3>Capital: {contryDetail[0]?.capital}</h3>
+                    <p>Region: {contryDetail[0]?.continent}</p>
+                    <p>Subregion: {contryDetail[0]?.subregion}</p>
+                    <p>Area: {contryDetail[0]?.area} km2</p>
+                    <p>Población: {contryDetail[0]?.population}</p>
+                    {
+                        Array.isArray(contryDetail[0]?.activities)
+                        ?
+                        contryDetail[0]?.activities.map((value,id) => {
+                            return (
+                                <p key={id}>{value.name}</p>
+                            )
+                        })
+                        :
+                        <p>{contryDetail[0]?.activities}</p>
+                    }
                 </div>
                 :
                 <h2>Loading ...</h2>

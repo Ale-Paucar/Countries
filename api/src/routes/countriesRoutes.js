@@ -5,7 +5,8 @@ const getAPIInfo = require('../controllers/getAPIInfo');
 const getCountryByName = require('../controllers/getCountryByName');
 const getCountryById = require('../controllers/getCountryById');
 //
-const createActivities = require('../controllers/createActivities')
+const getCountryActivities = require('../controllers/getCountryActivities');
+
 
 const countriesRoutes = Router();
 
@@ -28,6 +29,7 @@ countriesRoutes.get('/name', async (req,res)=>{
         const response = await axios.get('https://rest-countries.up.railway.app/v2/all');
         const paises = await getCountryByName(response.data,name);
         
+        
         res.status(200).json(paises)
         
     } catch (err) {
@@ -40,7 +42,12 @@ countriesRoutes.get('/:idPais', async (req,res)=>{
         const idPais = req.params.idPais;
         // ! hay que añadir a esto la base de datos de acvidades turisticas
         const response = await axios.get('https://rest-countries.up.railway.app/v2/all');
+
         const pais = await getCountryById(response.data,idPais);
+
+        const activitiesCountry = await getCountryActivities(idPais)
+
+        pais[0]["activities"] = activitiesCountry.activities;
         
         res.status(200).json(pais);
     } catch (err) {
