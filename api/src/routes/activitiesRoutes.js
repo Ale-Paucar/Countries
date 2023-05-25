@@ -30,7 +30,7 @@ activitiesRoutes.get('/',async (req,res)=>{
     try {
         const activities = await getActivity();
         res.status(201).json(activities)
-    } catch (error) {
+    } catch (err) {
         res.status(400).json( {err: err.message} )
     }
 })

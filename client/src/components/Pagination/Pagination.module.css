@@ -1,15 +1,19 @@
+.container{
+    min-height: 680px;
+}
+
 .paginationContainer {
     display: flex;
     max-width: 1670px;
     flex-direction: column;
     align-items: center;
     margin-top: 20px;
-    /* ! borrar este margin botoom */
     margin-bottom: 20px;
 }
 
 .paginationContainer button {
     background-color: transparent;
+    font: 1em sans-serif;
     border: none;
     cursor: pointer;
     font-size: 18px;
@@ -22,12 +26,17 @@
     transition: background-color 0.3s ease-in-out;
 }
 
+.paginationContainer .activeButton {
+    background-color: #383a3e; 
+    width: 32px;
+    height: 32px;
+}
+
 .buttonsContainer {
     display: flex;
     justify-content: center;
     margin-top: 10px;
 }
-
 
 
 .paginationContainer button:hover {

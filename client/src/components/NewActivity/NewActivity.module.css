@@ -9,9 +9,15 @@
     align-items: center;
 }
 
+.container h2{
+    color: #aaa;
+    font-size: 30px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
 .formContainer {
     background-color: rgba(0, 0, 0, 0.7);
-    height: 85%;
+    height: 75%;
     padding: 20px;
     border-radius: 10px;
 }
@@ -27,6 +33,140 @@
 }
 
 
+
+
+.searchContainer {
+    height: 50vh;
+    overflow-y: auto;
+    padding: 20px;
+    border: 1px solid #aaa;
+    border-radius: 8px;
+}
+
+.searchContainer p {
+    color: seashell;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.searchContainer label{
+    color: wheat;
+}
+
+.countryContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.subSearchC{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.countryItem {
+    display: flex;
+    width: 70%;
+    
+    align-items: center;
+    gap: 10px;
+    padding: 5px;
+    border-radius: 3px;
+    border: 1px solid #aaa;
+    margin-bottom: 2px;
+}
+
+.countryFlag {
+    width: 60px;
+}
+
+
+.loadingContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.loadingImage {
+    width: 100%;
+}
+
+
+.button[type='submit'] {
+    
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button[type='submit']:hover {
+    background-color: #2980b9;
+}
+
+/**/
+.formText{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 90%;
+    height: 100%;
+    border: 1px solid #aaa;
+    border-radius: 8px;
+}
+.formControl {
+    margin-bottom: 15px;
+}
+
+.formControl label{
+    color:antiquewhite;
+}
+
+.formControl span{
+    color:antiquewhite;
+}
+
+.input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+}
+
+.inputRange {
+    width: 100%;
+    
+    height: 8px;
+    border-radius: 5px;
+    background-color: #ccc;
+    outline: none;
+    margin-top: 5px;
+}
+
+.inputRange::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #3498db;
+    cursor: pointer;
+}
+
+.select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    background-color: #fff;
+}
 
 
 .checkmark {
@@ -45,79 +185,34 @@
 }
 
 .error {
-    color: red;
-    font-size: 12px;
+    color: rgb(217, 32, 4) !important;
+    font-size: 16px;
 }
 
-.searchContainer {
-    height: 50vh;
-    overflow-y: auto;
-    padding: 20px;
-}
 
-.searchContainer span {
-    color: #727272;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.searchContainer label{
-    color: wheat;
-}
-
-.countryContainer {
+.selectCountriesC{
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    height: 100%;
+    border: 1px solid #aaa;
+    border-radius: 8px;
 }
 
-.countryItem {
+.selectedCountry{
     display: flex;
+    width: 70%;
+    
     align-items: center;
     gap: 10px;
     padding: 5px;
+    border-radius: 3px;
+    border: 1px solid #aaa;
+    margin-bottom: 2px;
 }
 
-.countryFlag {
-    width: 60px;
+.selectedCountry label{
+    color: antiquewhite;
 }
-
-.loadingContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-}
-
-.loadingImage {
-    width: 100%;
-}
-
-
-.button[type='submit'] {
-    grid-column: span 3;
-    background-color: #3498db;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.button[type='submit']:hover {
-    background-color: #2980b9;
-}
-
-/* a {
-    background-color: #3498db;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    text-decoration: none;
-  }
-  
-  a:hover {
-    background-color: #2980b9;
-  } */

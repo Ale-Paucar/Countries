@@ -2,48 +2,98 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #7d7e8e;
 }
 
 .header {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #000000;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    box-sizing: border-box;
 }
 
+
+.subHeader {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: #585a65;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}  
+
 .logo {
-    font-size: 24px;
+    width: 170px;
 }
 
 .searchBarContainer {
     margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.searchBarContainer p {
+    margin-right: 10px; 
+    color: white; 
+    font-family: Verdana, Geneva, Tahoma, sans-serif 
 }
 
 .createActivityButton {
-    padding: 8px 16px;
-    background-color: #ccc;
-    border: none;
-    border-radius: 4px;
+    background-color: #383a3e;
+    border: 2px solid #383a3e;
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif ;
+    font-size: 16px;
+    padding: 10px 20px;
+    margin-right: 10px;
     cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.createActivityButton:hover {
+    background-color: white;
+    color: #383a3e;
+    border-color: #383a3e;
 }
 
 .filterContainer {
-    display: flex;
-    margin-bottom: 20px;
+    margin-right: 20px;
 }
 
 .filterLabel {
-    margin-right: 10px;
+    color: #ffffff;
+    font-size: 16px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif ;
 }
 
 .filterSelect {
     padding: 8px;
-    border: 1px solid #ccc;
+    font-size: 14px;
+    border: 1px solid #7d7e8e;
     border-radius: 4px;
+    color: #060606;
+    background-color: #919695;
+    font-family: Verdana, Geneva, Tahoma, sans-serif ;
+    cursor: pointer;
 }
 
-.paginationContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.filterSelect option {
+    color: #060606;
+    background-color: #919695;
+    padding: 8px;
+    font-size: 14px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif ;
 }
+
+.filterSelect option:hover {
+    background-color: #383a3e;
+    color: #ffffff;
+}
+
+

@@ -40,7 +40,7 @@ countriesRoutes.get('/name', async (req,res)=>{
 countriesRoutes.get('/:idPais', async (req,res)=>{
     try {
         const idPais = req.params.idPais;
-        // ! hay que añadir a esto la base de datos de acvidades turisticas
+        
         const response = await axios.get('https://rest-countries.up.railway.app/v2/all');
 
         const pais = await getCountryById(response.data,idPais);

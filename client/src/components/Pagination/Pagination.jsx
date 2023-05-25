@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 
 import Cards from '../Cards/Cards';
+import loading from '../images/loading.gif'
 
 const Pagination = () =>{
     const countries = useSelector(state => state.countries);
@@ -37,6 +38,7 @@ const Pagination = () =>{
             <button
                 key={i}
                 onClick={()=>handlePageChange(i+1)}
+                className={currentPage === i + 1 ? styles.activeButton : styles.button}
             >{i+1}</button>
         )
     }
@@ -46,7 +48,7 @@ const Pagination = () =>{
     },[countries])
 
     return(
-        <div>
+        <div className={styles.container}>
             {
                 countries.length
                 ?
@@ -64,7 +66,9 @@ const Pagination = () =>{
                         </div>
                     </div>
                 :
-                <h2>Loading...</h2>
+                <div>
+                    <img src={loading} alt="loading"  />
+                </div>   
             }
         </div>
     )

@@ -1,0 +1,30 @@
+
+.inputContainer {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.inputContainer input {
+    width: 80%;
+    height: 40%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif ;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #f5f5f5;
+    color: #060606;
+    font-size: 16px;
+}
+
+.inputContainer input:focus {
+    outline: none;
+    
+}
+
+
+
+.inputContainer input::placeholder {
+    color: #7d7e8e;
+    font-style: italic;
+}

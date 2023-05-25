@@ -1,15 +1,20 @@
-const validation = (input) => {
+const validation = (input,activities) => {
     let errors = {};
     const regEx = /^[a-zA-Z\s]*$/;
     // name
     if(!input.name)  errors.name = 'El nombre de la actividad es requerido';
 
-    if(input.name.trim() === '')  errors.name = 'El nombre no puede estar en blanco';
-    
-    // ! hacer la validacion si existe una actividad con ese nombre
+    if(input.name.trim() === '')  errors.name = 'La actividad no puede estar en blanco';
 
-    if(!regEx.test(input.name)) errors.name = 'No se permiten números o caracteres especiales'
-    if(input.name.length > 20)  errors.name = 'La actividad debe tener menos de 20 caracteres'.charAt
+    console.log(activities);
+    console.log(input.name);
+    if (activities.length > 0 && activities.some(activity => activity.name === input.name)) {
+        errors.name = 'Esa actividad ya existe';
+    }
+    
+
+    if(!regEx.test(input.name)) errors.name = 'No se permiten números o caracteres especiales';
+    if(input.name.length > 20)  errors.name = 'La actividad debe tener menos de 20 caracteres';
     //season
     
     if(!input.season){

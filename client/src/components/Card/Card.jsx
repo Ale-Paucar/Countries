@@ -4,7 +4,9 @@ import styles from './Card.module.css';
 const Card = ({name,flag,continent,subregion,population,area,origin,capital}) => {
     return(
         <div className={styles.card}>
-            <img src={flag.svg} alt={flag.alt} />
+            <div className={styles.imgContainer}>
+                <img className={styles.img} src={flag.svg} alt={flag.alt} />
+            </div>
             <h3>{`Nombre: ${name}`}</h3>
             {/* <p>{`Capital: ${capital}`}</p> */}
             <p>{`Continente: ${continent}`}</p>

@@ -1,10 +1,12 @@
 import {
     GET_ALL_COUNTRIES,
+    GET_ACTIVITIES,
     FILTER_COUNTRIES_BY_ACTIVITIES,
     FILTER_COUNTRIES_BY_CONTINENT,
     ORDER_BY_NAME_OR_POPULATION,
     GET_COUNTRY_DETAIL,
     GET_COUNTRY_BY_NAME,
+    POST_ACTIVITIES,
 } from '../actions/action-types';
 
 const initialState = {
@@ -12,6 +14,7 @@ const initialState = {
     allCountries: [],
     continents: [],
     countryDetail: [],
+    activities: []
 }
 
 const reducer = (state = initialState, action) => {
@@ -22,6 +25,12 @@ const reducer = (state = initialState, action) => {
                 countries: action.payload,
                 allCountries: action.payload
             };
+
+        case GET_ACTIVITIES:
+            return{
+                ...state,
+                activities: action.payload,
+            }
 
         case FILTER_COUNTRIES_BY_CONTINENT:
             const countriesFiltered = 
@@ -35,8 +44,21 @@ const reducer = (state = initialState, action) => {
             };
 
         case FILTER_COUNTRIES_BY_ACTIVITIES:
+            const [activity] = [...state.activities].filter(activity => activity.name === action.payload)
+            const countriesFilteredByActivity = 
+                (action.payload === "All")
+                ? state.allCountries
+                : [...state.allCountries].filter(country => {
+                    for (const countryAct of activity.countries) {
+                        if (countryAct.id === country.id) return true;
+                    }
+                    return false;
+                });
+            
+            
             return{
-                ...state
+                ...state,
+                countries: countriesFilteredByActivity
             };
 
         case ORDER_BY_NAME_OR_POPULATION:
@@ -108,6 +130,12 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 countries: action.payload,
             }
+
+        case POST_ACTIVITIES:
+
+        return{
+            ...state
+        }
     
         default:
             return {...state};

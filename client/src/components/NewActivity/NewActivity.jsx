@@ -1,22 +1,37 @@
 import styles from './NewActivity.module.css';
 
 import validation from './validation';
-import { Link } from 'react-router-dom';
+import { Link , useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
-import { getAllCountries } from '../../redux/actions';
+import { getAllCountries, getActivities } from '../../redux/actions';
 import SearchBar from '../SearchBar/SearchBar';
-import loadingImage from '../images/loading.gif'
+import loadingImage from '../images/loading.gif';
+import { postActivities } from '../../redux/actions';
 
 const NewActivity = () => {
     const allcountries = useSelector(state => state.countries)
-    console.log(allcountries);
-    const dispatch = useDispatch()
+    const activities = useSelector(state => state.activities)
+    
+    const dispatch = useDispatch();
+    const navigate = useNavigate ();
     
     useEffect(()=>{
         dispatch(getAllCountries());
+        dispatch(getActivities())
         return () => {
             dispatch(getAllCountries());
+            setInput({
+                name: '',
+                hp: '',
+                attack: '',
+                defense: '',
+                speed: '',
+                weight: '',
+                height: '',
+                types: [],
+            });
+            
         }
     },[])
     
@@ -49,7 +64,7 @@ const NewActivity = () => {
             setErrors(validation({
                 ...input,
                 [event.target.name]: parseFloat(event.target.value) 
-            }));
+            },activities));
         }else{
             setInput({
                 ...input,
@@ -59,7 +74,7 @@ const NewActivity = () => {
             setErrors(validation({
                 ...input,
                 [event.target.name]: event.target.value
-            }));
+            },activities));
         }
     }
 
@@ -75,7 +90,7 @@ const NewActivity = () => {
             setErrors(validation({
                 ...input,
                 selectedCountries: [...input.selectedCountries, selectedCountry]
-            }))
+            },activities))
         }
 
         if(!event.target.checked){
@@ -87,7 +102,7 @@ const NewActivity = () => {
             setErrors(validation({
                 ...input,
                 selectedCountries: [...input.selectedCountries].filter(value=> value.id !== event.target.value)
-            }))
+            },activities))
         }
 
     }
@@ -98,11 +113,14 @@ const NewActivity = () => {
         e.preventDefault();
 
         if (Object.keys(errors).length === 0) {
+            dispatch(postActivities(input));
             
-            console.log('se subio correctamente');
+            alert('se subio correctamente');
+
+            navigate("/home")
         } else {
             
-            console.log('ups, hubo un error');
+            alert('ups, hubo un error');
         }
     }
 
@@ -112,13 +130,14 @@ const NewActivity = () => {
     return (
         <div className={styles.container}>
             <div className={styles.formContainer}>
-            <h3>Crea una actividad</h3>
+            <h2>Crea una actividad</h2>
             <form onSubmit={e=>handleSubmit(e)} className={styles.form}>
-                <div>
+                <div className={styles.formText}>
 
-                    <div>
+                    <div className={styles.formControl}>
                         <label htmlFor="name">Nombre de la actividad:</label>
-                        <input type="text" name='name' value={input.name} onChange={handleInputChange}/>
+                        <input  autocomplete="off" type="text" name='name' value={input.name} onChange={handleInputChange}/>
+                        <br />
                         {errors.name?
                         <span className={styles.error}>{errors.name}</span>
                         :
@@ -128,10 +147,11 @@ const NewActivity = () => {
                         }
                     </div>
                     
-                    <div>
+                    <div className={styles.formControl}>
                         <label htmlFor="dificulty">Dificultad</label>
                         <input type="range" min="0" max="5" step="1" name='dificulty' value={input.dificulty} onChange={handleInputChange}></input>
                         <span>{input.dificulty} / 5</span>
+                        <br />
                         {errors.dificulty?
                         <span className={styles.error}>{errors.dificulty}</span>
                         :
@@ -141,10 +161,11 @@ const NewActivity = () => {
                         }
                     </div>
 
-                    <div>
+                    <div className={styles.formControl}>
                         <label htmlFor="duration">Duración</label>
                         <input type="range" min="0" max="10" step="1" name='duration' value={input.duration} onChange={handleInputChange}></input>
                         <span>{input.duration} horas</span>
+                        <br />
                         {errors.duration?
                         <span className={styles.error}>{errors.duration}</span>
                         :
@@ -154,7 +175,7 @@ const NewActivity = () => {
                         }
                     </div>
                     
-                    <div>
+                    <div className={styles.formControl}>
                         <label htmlFor="season">Estación: </label>
                         <select name="season" id="season" value={input.season} onChange={handleInputChange}>
                             <option value="" disabled>Temporada</option>
@@ -163,6 +184,7 @@ const NewActivity = () => {
                             <option value="Invierno">Invierno</option>
                             <option value="Primavera">Primavera</option>
                         </select>
+                        <br />
                         {errors.season?
                         <span className={styles.error}>{errors.season}</span>
                         :
@@ -171,12 +193,13 @@ const NewActivity = () => {
                         ''
                         }
                     </div>
+                    
                 </div>
                 
                 <div className={styles.searchContainer}>
-                    <span>Buscar pais</span>
+                    <p>Buscar pais</p>
                     <SearchBar></SearchBar>
-                    <div>
+                    <div className={styles.subSearchC}>
                         {
                             allcountries.length
                             ?
@@ -200,7 +223,7 @@ const NewActivity = () => {
                     </div>
                 </div>
 
-                <div>
+                <div className={styles.selectCountriesC}>
                     {   
                         errors.selectedCountries?
                         <p className={styles.error}>{errors.selectedCountries}</p>
@@ -224,7 +247,7 @@ const NewActivity = () => {
                 <button type='submit'>Crear</button>
             </form>
             
-            <Link to='../home'>Atrás</Link>
+            <Link to='../home'><button >Atrás</button></Link>
             </div>
         </div>
     )

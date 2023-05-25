@@ -23,8 +23,8 @@ const SearchBar = () => {
     
 
     return(
-        <div>
-            <input type="text" onChange={handleInputChange}/>
+        <div className={styles.inputContainer}>
+            <input type="text" placeholder='Pais' onChange={handleInputChange}/>
         </div>
     )
 }

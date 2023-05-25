@@ -1,0 +1,53 @@
+.landingPage {
+    background-image: url('../images/peakpx.jpg');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    
+}
+
+.title {
+    font-size: 80px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    margin-bottom: 20px;
+}
+
+.subtitle {
+    font-size: 20px;
+    color: rgb(212, 200, 184);
+    margin-bottom: 40px;
+}
+
+.container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.9); /* Ajusta el valor de opacidad (0.5) según tu preferencia */
+}
+
+.author {
+    font-size: 14px;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.buttonH {
+    padding: 10px 20px;
+    background-color: #293e2a;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.buttonH:hover {
+    background-color: #011208;
+}
